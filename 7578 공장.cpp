@@ -1,7 +1,7 @@
 #include <cstdio>
 
 int N;
-int tree[500001];
+int seg[500001];
 int sequence[500001];
 int time[1000001];
 
@@ -10,7 +10,7 @@ int sum(int i) // 1~i번째 위치까지의 합
 	int s = 0;
 	while (i > 0)
 	{
-		s += tree[i];
+		s += seg[i];
 		i -= (i & -i);
 	}
 	return s;
@@ -20,7 +20,7 @@ void update(int i, int num)
 {
 	while (i <= N)
 	{
-		tree[i] += num;
+		seg[i] += num;
 		i += (i & -i);
 	}
 }

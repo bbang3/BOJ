@@ -6,29 +6,25 @@
 using namespace std;
 
 const int MN = 1000 + 5;
-int T, N, K, W;
+int T, N, S, W;
 int time[MN];
-int graph[MN][MN];
-int dp[MN];
-int ind[MN];
-queue<int> Q;
+int D[MN], ind[MN];
+vector<int> G[MN];
+queue<int> M;
 
 void bfs()
 {
 	for (int i = 1; i <= N; i++)
-		if (ind[i] == 0) Q.push(i); // indegree가 0인(들어오는 간선X)인 정점 push
-	while (!Q.empty())
+		if (ind[i] == 0) M.push(i); // indegree가 0인(들어오는 간선X)인 정점 push
+	while (!M.empty())
 	{
-		int cur = Q.front();
-		Q.pop();
-		for (int i = 1; i <= N; i++)
+		int cur = M.front();
+		M.pop();
+		for (int next : G[cur])
 		{
-			if (graph[cur][i])
-			{
-				dp[i] = max(dp[i], time[i] + dp[cur]); // 연결된 정점 update
-				ind[i]--;
-				if (ind[i] == 0) Q.push(i); // cur삭제 후 indegree 0이면 push
-			}
+			D[next] = max(D[next], time[next] + D[cur]); // 연결된 정점 update
+			ind[next]--;
+			if (ind[next] == 0) M.push(next); // cur삭제 후 indegree 0이면 push
 		}
 	}
 }
@@ -40,28 +36,24 @@ int main()
 	scanf("%d", &T);
 	while (T--)
 	{
-		scanf("%d %d", &N, &K);
+		scanf("%d %d", &N, &S);
 		for (int i = 1; i <= N; i++)
 		{
 			scanf("%d", time + i);
-			dp[i] = time[i];
+			D[i] = time[i];
+			G[i].clear();
 		}
-		for (int i = 1; i <= N; i++)
+		memset(ind, 0, sizeof(ind));
+		int src, dest;
+		for (int i = 0; i < S; i++)
 		{
-			ind[i] = 0;
-			for (int j = 1; j <= N; j++)
-				graph[i][j] = 0;
-		}
-		for (int i = 0; i < K; i++)
-		{
-			int src, dest;
 			scanf("%d %d", &src, &dest);
-			graph[src][dest] = 1;
+			G[src].push_back(dest);
 			ind[dest]++; // indegree 계산
 		}
 		scanf("%d", &W);
 		bfs();
-		printf("%d\n", dp[W]);
+		printf("%d\n", D[W]);
 	}
 	return 0;
 }

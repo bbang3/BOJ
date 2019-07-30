@@ -7,7 +7,7 @@ using namespace std;
 int N, M;
 int dist[102][102];
 //int previous[20001];
-bool visited[102][102];
+bool visit[102][102];
 int arr[102][102];
 
 bool issafe(int x, int y)
@@ -46,12 +46,12 @@ int main()
 	{
 		node cur = PQ.top();
 		PQ.pop();
-		visited[cur.y][cur.x] = true;
+		visit[cur.y][cur.x] = true;
 		for (int k = 0; k < 4; k++)
 		{
 			int nextx = cur.x + offset[k][1], nexty = cur.y + offset[k][0];
 			
-			if (issafe(nextx, nexty) && !visited[nexty][nextx])
+			if (issafe(nextx, nexty) && !visit[nexty][nextx])
 			{
 				if (dist[cur.y][cur.x] + arr[nexty][nextx] < dist[nexty][nextx]) {
 					dist[nexty][nextx] = dist[cur.y][cur.x] + arr[nexty][nextx]	;

@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <memory.h>
 #include <string.h>
-int N, K;
+int N, S;
 
 int arr[101][1001];
 int pattern[1001];
@@ -53,7 +53,7 @@ bool check()
 
 int main()
 {
-	scanf("%d %d", &N, &K);
+	scanf("%d %d", &N, &S);
 
 	for (int i = 1; i <= N; i++)
 	{
@@ -62,7 +62,7 @@ int main()
 			scanf("%d", &arr[i][j]);
 	}
 
-	int k = K;
+	int k = S;
 	for (int i = 1; i <= arr[1][0] - k + 1; i++)
 	{
 		int idx = 1;

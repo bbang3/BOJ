@@ -1,17 +1,17 @@
 #include <cstdio>
 using namespace std;
 
-int dp[30][30];
+int D[30][30];
 
 int ncr(int n, int r)
 {
 	if (r > n) return 0;
-	if (dp[n][r])
-		return dp[n][r];
-	if (r == 1) return dp[n][r] = n;
-	if (r == 0) return dp[n][r] = 1;
+	if (D[n][r])
+		return D[n][r];
+	if (r == 1) return D[n][r] = n;
+	if (r == 0) return D[n][r] = 1;
 	
-	return dp[n][r] = ncr(n - 1, r - 1) + ncr(n - 1, r);
+	return D[n][r] = ncr(n - 1, r - 1) + ncr(n - 1, r);
 }
 int main()
 {

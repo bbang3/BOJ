@@ -5,10 +5,10 @@
 using namespace std;
 
 int N, M;
-vector<int> graph[101];
+vector<int> dist[101];
 bool haspath[101][101];
-queue<int> Q;
-bool visited[101];
+queue<int> M;
+bool visit[101];
 
 int main()
 {
@@ -18,25 +18,25 @@ int main()
 	{
 		int src, dest;
 		scanf("%d%d", &src, &dest);
-		graph[src].push_back(dest);
+		dist[src].push_back(dest);
 	}
 
 	for (int i = 1; i <= N; i++)
 	{
-		memset(visited, 0, sizeof(visited));
-		Q.push(i);
-		while (!Q.empty())
+		memset(visit, 0, sizeof(visit));
+		M.push(i);
+		while (!M.empty())
 		{
-			int cur = Q.front();
-			Q.pop();
-			visited[cur] = true;
-			for (int next : graph[cur])
+			int cur = M.front();
+			M.pop();
+			visit[cur] = true;
+			for (int next : dist[cur])
 			{
-				if (!visited[next])
+				if (!visit[next])
 				{
 					haspath[i][next] = true;
 					haspath[next][i] = true;
-					Q.push(next);
+					M.push(next);
 				}
 			}
 		}

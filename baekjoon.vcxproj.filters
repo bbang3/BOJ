@@ -34,6 +34,21 @@
     <Filter Include="소스 파일\Disjoint-Set">
       <UniqueIdentifier>{76d4971f-c453-433f-baef-033044e7a842}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\그래프\최단 경로">
+      <UniqueIdentifier>{1db89709-cbae-404c-bc03-1651033e66a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\비트마스크">
+      <UniqueIdentifier>{de3fd506-bed2-4052-857e-78087eb305c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\그래프\위상 정렬">
+      <UniqueIdentifier>{40b1644a-b5ec-437a-8021-3df76ca0a7cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\소수">
+      <UniqueIdentifier>{b0114f6f-91cf-4447-a0c6-d51e3d16c9b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\스택">
+      <UniqueIdentifier>{5b980af3-1d0e-48b4-9596-fdd99b1e0633}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="%28미%29candygame.cpp">
@@ -81,9 +96,6 @@
     <ClCompile Include="10159 저울.cpp">
       <Filter>소스 파일\그래프</Filter>
     </ClCompile>
-    <ClCompile Include="1753 최단 경로.cpp">
-      <Filter>소스 파일\그래프</Filter>
-    </ClCompile>
     <ClCompile Include="1012 배추.cpp">
       <Filter>소스 파일\그래프</Filter>
     </ClCompile>
@@ -101,9 +113,6 @@
     </ClCompile>
     <ClCompile Include="14488 준오는 급식충이야!!.cpp">
       <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="1261 알고스팟.cpp">
-      <Filter>소스 파일\그래프</Filter>
     </ClCompile>
     <ClCompile Include="2464 비밀번호.cpp">
       <Filter>소스 파일</Filter>
@@ -198,20 +207,11 @@
     <ClCompile Include="7572 간지.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="1005 ACM Craft.cpp">
-      <Filter>소스 파일\그래프</Filter>
-    </ClCompile>
     <ClCompile Include="3079 입국심사.cpp">
       <Filter>소스 파일\이분 탐색</Filter>
     </ClCompile>
-    <ClCompile Include="1451 직사각형으로 나누기.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="14863 서울에서 경산까지.cpp">
       <Filter>소스 파일\다이나믹 프로그래밍</Filter>
-    </ClCompile>
-    <ClCompile Include="14867 물통.cpp">
-      <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="14864 줄서기.cpp">
       <Filter>소스 파일</Filter>
@@ -276,13 +276,214 @@
     <ClCompile Include="9011 순서.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="퇴사.cpp">
-      <Filter>소스 파일\브루트 포스</Filter>
-    </ClCompile>
     <ClCompile Include="2839 설탕배달.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="14501 퇴사.cpp">
+      <Filter>소스 파일\브루트 포스</Filter>
+    </ClCompile>
     <ClCompile Include="1316 그룹 단어 체커.cpp">
+      <Filter>소스 파일\문자열</Filter>
+    </ClCompile>
+    <ClCompile Include="1451 직사각형으로 나누기.cpp">
+      <Filter>소스 파일\다이나믹 프로그래밍</Filter>
+    </ClCompile>
+    <ClCompile Include="14867 물통.cpp">
+      <Filter>소스 파일\그래프</Filter>
+    </ClCompile>
+    <ClCompile Include="2606 바이러스.cpp">
+      <Filter>소스 파일\그래프</Filter>
+    </ClCompile>
+    <ClCompile Include="2458 키 순서.cpp">
+      <Filter>소스 파일\그래프</Filter>
+    </ClCompile>
+    <ClCompile Include="2696 중앙값 구하기.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1149 RGB 거리.cpp">
+      <Filter>소스 파일\다이나믹 프로그래밍</Filter>
+    </ClCompile>
+    <ClCompile Include="9465 스티커.cpp">
+      <Filter>소스 파일\다이나믹 프로그래밍</Filter>
+    </ClCompile>
+    <ClCompile Include="11722 가장 긴 감소하는 부분 수열.cpp">
+      <Filter>소스 파일\다이나믹 프로그래밍</Filter>
+    </ClCompile>
+    <ClCompile Include="2133 타일 채우기.cpp">
+      <Filter>소스 파일\다이나믹 프로그래밍</Filter>
+    </ClCompile>
+    <ClCompile Include="2225 합분해.cpp">
+      <Filter>소스 파일\다이나믹 프로그래밍</Filter>
+    </ClCompile>
+    <ClCompile Include="2011 암호코드.cpp">
+      <Filter>소스 파일\다이나믹 프로그래밍</Filter>
+    </ClCompile>
+    <ClCompile Include="2156 포도주 시식.cpp">
+      <Filter>소스 파일\다이나믹 프로그래밍</Filter>
+    </ClCompile>
+    <ClCompile Include="1890 점프.cpp">
+      <Filter>소스 파일\다이나믹 프로그래밍</Filter>
+    </ClCompile>
+    <ClCompile Include="1806 부분합.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="10942 팰린드롬.cpp">
+      <Filter>소스 파일\다이나믹 프로그래밍</Filter>
+    </ClCompile>
+    <ClCompile Include="1915 가장 큰 정사각형.cpp">
+      <Filter>소스 파일\다이나믹 프로그래밍</Filter>
+    </ClCompile>
+    <ClCompile Include="1261 알고스팟.cpp">
+      <Filter>소스 파일\그래프\최단 경로</Filter>
+    </ClCompile>
+    <ClCompile Include="1238 파티.cpp">
+      <Filter>소스 파일\그래프\최단 경로</Filter>
+    </ClCompile>
+    <ClCompile Include="1753 최단 경로.cpp">
+      <Filter>소스 파일\그래프\최단 경로</Filter>
+    </ClCompile>
+    <ClCompile Include="5719 거의 최단 경로.cpp">
+      <Filter>소스 파일\그래프\최단 경로</Filter>
+    </ClCompile>
+    <ClCompile Include="10473 인간 대포.cpp">
+      <Filter>소스 파일\그래프\최단 경로</Filter>
+    </ClCompile>
+    <ClCompile Include="11404 플로이드.cpp">
+      <Filter>소스 파일\그래프\최단 경로</Filter>
+    </ClCompile>
+    <ClCompile Include="11779 최소비용 구하기 2.cpp">
+      <Filter>소스 파일\그래프\최단 경로</Filter>
+    </ClCompile>
+    <ClCompile Include="16681 등산.cpp">
+      <Filter>소스 파일\그래프\최단 경로</Filter>
+    </ClCompile>
+    <ClCompile Include="dijkstra_sample.cpp">
+      <Filter>소스 파일\그래프\최단 경로</Filter>
+    </ClCompile>
+    <ClCompile Include="4485 녹색 옷 입은 애가 젤다지.cpp">
+      <Filter>소스 파일\그래프\최단 경로</Filter>
+    </ClCompile>
+    <ClCompile Include="16118 달빛 여우.cpp">
+      <Filter>소스 파일\그래프\최단 경로</Filter>
+    </ClCompile>
+    <ClCompile Include="1922 네트워크 연결.cpp">
+      <Filter>소스 파일\Disjoint-Set</Filter>
+    </ClCompile>
+    <ClCompile Include="6497 전력난.cpp">
+      <Filter>소스 파일\Disjoint-Set</Filter>
+    </ClCompile>
+    <ClCompile Include="unionfind_sample.cpp">
+      <Filter>소스 파일\Disjoint-Set</Filter>
+    </ClCompile>
+    <ClCompile Include="1976 여행 가자.cpp">
+      <Filter>소스 파일\Disjoint-Set</Filter>
+    </ClCompile>
+    <ClCompile Include="16562 친구비.cpp">
+      <Filter>소스 파일\Disjoint-Set</Filter>
+    </ClCompile>
+    <ClCompile Include="10775 공항.cpp">
+      <Filter>소스 파일\Disjoint-Set</Filter>
+    </ClCompile>
+    <ClCompile Include="9938 방 청소.cpp">
+      <Filter>소스 파일\Disjoint-Set</Filter>
+    </ClCompile>
+    <ClCompile Include="1647 도시 분할 계획.cpp">
+      <Filter>소스 파일\Disjoint-Set</Filter>
+    </ClCompile>
+    <ClCompile Include="1389 케빈 베이컨의 6단계 게임.cpp">
+      <Filter>소스 파일\그래프\최단 경로</Filter>
+    </ClCompile>
+    <ClCompile Include="2178 미로 탐색.cpp">
+      <Filter>소스 파일\그래프\최단 경로</Filter>
+    </ClCompile>
+    <ClCompile Include="11723 집합.cpp">
+      <Filter>소스 파일\비트마스크</Filter>
+    </ClCompile>
+    <ClCompile Include="1562 계단 수.cpp">
+      <Filter>소스 파일\비트마스크</Filter>
+    </ClCompile>
+    <ClCompile Include="2098 외판원 순회.cpp">
+      <Filter>소스 파일\비트마스크</Filter>
+    </ClCompile>
+    <ClCompile Include="1194 달이 차오른다, 가자.cpp">
+      <Filter>소스 파일\비트마스크</Filter>
+    </ClCompile>
+    <ClCompile Include="2252 줄 세우기.cpp">
+      <Filter>소스 파일\그래프\위상 정렬</Filter>
+    </ClCompile>
+    <ClCompile Include="1005 ACM Craft.cpp">
+      <Filter>소스 파일\그래프\위상 정렬</Filter>
+    </ClCompile>
+    <ClCompile Include="1516 게임 개발.cpp">
+      <Filter>소스 파일\그래프\위상 정렬</Filter>
+    </ClCompile>
+    <ClCompile Include="2529 부등호.cpp">
+      <Filter>소스 파일\그래프\위상 정렬</Filter>
+    </ClCompile>
+    <ClCompile Include="2637 장난감 조립.cpp">
+      <Filter>소스 파일\그래프\위상 정렬</Filter>
+    </ClCompile>
+    <ClCompile Include="16434 드래곤 앤 던전.cpp">
+      <Filter>소스 파일\이분 탐색</Filter>
+    </ClCompile>
+    <ClCompile Include="1011 Fly me to the Alpha Centauri.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="9020 골드바흐의 추측.cpp">
+      <Filter>소스 파일\소수</Filter>
+    </ClCompile>
+    <ClCompile Include="1929 소수 구하기.cpp">
+      <Filter>소스 파일\소수</Filter>
+    </ClCompile>
+    <ClCompile Include="2312 수 복원하기.cpp">
+      <Filter>소스 파일\소수</Filter>
+    </ClCompile>
+    <ClCompile Include="9251 LCS.cpp">
+      <Filter>소스 파일\다이나믹 프로그래밍</Filter>
+    </ClCompile>
+    <ClCompile Include="15483 최소 편집.cpp">
+      <Filter>소스 파일\다이나믹 프로그래밍</Filter>
+    </ClCompile>
+    <ClCompile Include="9252 LCS 2.cpp">
+      <Filter>소스 파일\다이나믹 프로그래밍</Filter>
+    </ClCompile>
+    <ClCompile Include="1102 발전소.cpp">
+      <Filter>소스 파일\비트마스크</Filter>
+    </ClCompile>
+    <ClCompile Include="1495 기타리스트.cpp">
+      <Filter>소스 파일\다이나믹 프로그래밍</Filter>
+    </ClCompile>
+    <ClCompile Include="11066 파일 합치기.cpp">
+      <Filter>소스 파일\다이나믹 프로그래밍</Filter>
+    </ClCompile>
+    <ClCompile Include="6198 옥상 정원 꾸미기.cpp">
+      <Filter>소스 파일\스택</Filter>
+    </ClCompile>
+    <ClCompile Include="1874 스택 수열.cpp">
+      <Filter>소스 파일\스택</Filter>
+    </ClCompile>
+    <ClCompile Include="15903 카드 합체 놀이.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="15899 트리와 색깔.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="10757 큰 수 A+B.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="13164 행복 유치원.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="2357 최솟값과 최댓값.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="17371 이사.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="17367 공교육 도박.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="소스1.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

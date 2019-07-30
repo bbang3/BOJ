@@ -7,11 +7,11 @@ using namespace std;
 // 교훈 : string은 쓰지 말자.
 const int MF = 200000 + 5;
 
-int par[MF], num[MF];
+int p[MF], num[MF];
 int find(int n) // n의 부모 찾기
 {
-	if (n == par[n]) return n;
-	return par[n] = find(par[n]);
+	if (n == p[n]) return n;
+	return p[n] = find(p[n]);
 }
 
 void uni(int a, int b)
@@ -19,7 +19,7 @@ void uni(int a, int b)
 	int pa = find(a), pb = find(b);
 	if (pa != pb)
 	{
-		par[pb] = pa;
+		p[pb] = pa;
 		num[pa] += num[pb];
 		num[pb] = 1;
 	}
@@ -37,7 +37,7 @@ int main()
 		map<string, int> friends;
 		scanf("%d", &F);
 
-		for (int i = 1; i <= 2 * F + 1; i++) par[i] = i, num[i] = 1;
+		for (int i = 1; i <= 2 * F + 1; i++) p[i] = i, num[i] = 1;
 
 		int curidx = 0;
 		for (int i = 0; i < F; i++)

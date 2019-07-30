@@ -1,14 +1,14 @@
 #include <cstdio>
 #include <algorithm>
 using namespace std;
-int dp[1000001]; // 연산 횟수 저장
+int D[1000001]; // 연산 횟수 저장
 
 int f(int num)
 {
 	if (num == 1) return 0;
-	if (dp[num]) return dp[num];
+	if (D[num]) return D[num];
 
-	int &ret = dp[num];
+	int &ret = D[num];
 	if (num % 3 == 0 && num % 2 == 0)
 		ret = 1 + min(f(num / 3), f(num / 2));
 	else if (num % 3 == 0)

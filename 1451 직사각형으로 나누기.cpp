@@ -5,7 +5,7 @@ using namespace std;
 int N, M;
 long long ans = 0;
 long long partsum[105][105];
-int map[105][105];
+int candy[105][105];
 
 long long g(int, int, int, int);
 
@@ -14,7 +14,7 @@ void init()
 	for(int i=1;i<=N;i++)
 		for (int j = 1; j <= M; j++)
 		{
-			partsum[i][j] = partsum[i - 1][j] + partsum[i][j - 1] - partsum[i - 1][j - 1] + map[i][j];
+			partsum[i][j] = partsum[i - 1][j] + partsum[i][j - 1] - partsum[i - 1][j - 1] + candy[i][j];
 		}
 }
 
@@ -76,7 +76,7 @@ int main()
 	scanf("%d %d", &N, &M);
 	for (int i = 1; i <= N; i++)
 		for (int j = 1; j <= M; j++)
-			scanf("%1d", &map[i][j]);
+			scanf("%1d", &candy[i][j]);
 
 	init();
 	f();

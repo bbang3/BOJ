@@ -5,14 +5,14 @@ using namespace std;
 // 친구가 있는 곳으로 가는 경로 길이 총합(중복 제외) - 가장 먼 친구 경로 길이
 struct edge
 {
-	int dest;
+	int v;
 	int w;
-	edge(int dest, int w) : dest(dest), w(w) {}
+	edge(int dest, int w) : v(dest), w(w) {}
 };
 
 const int MN = 1e5 + 5;
 
-vector<edge> graph[MN];
+vector<edge> dist[MN];
 int N, F;
 int friends[MN];
 int totallen = 0, maxlen = 0;
@@ -22,12 +22,12 @@ bool dfs(int cur, int prev, int w)
 	bool ret = false;
 	if (friends[cur]) totallen += w, ret = true;
 
-	for (edge next : graph[cur])
+	for (edge next : dist[cur])
 	{
 		if (ret) w = 0;
-		if (next.dest != prev)
+		if (next.v != prev)
 		{
-			ret |= dfs(next.dest, cur, w + next.w);
+			ret |= dfs(next.v, cur, w + next.w);
 		}
 	}
 
@@ -38,9 +38,9 @@ void get_maxlen(int cur, int prev, int w)
 {
 	if (friends[cur]) maxlen = max(maxlen, w);
 
-	for (edge next : graph[cur])
-		if (next.dest != prev)
-			get_maxlen(next.dest, cur, w + next.w);
+	for (edge next : dist[cur])
+		if (next.v != prev)
+			get_maxlen(next.v, cur, w + next.w);
 }
 
 int main()
@@ -51,7 +51,7 @@ int main()
 	{
 		int a, b, w;
 		scanf("%d %d %d", &a, &b, &w);
-		graph[a].push_back(edge(b, w));
+		dist[a].push_back(edge(b, w));
 	}
 	for (int i = 0; i < F; i++)
 	{

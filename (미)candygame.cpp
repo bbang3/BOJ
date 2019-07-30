@@ -3,7 +3,7 @@
 #include <memory.h>
 using namespace std;
 char arr[51][51];
-int visited[51][51];
+int visit[51][51];
 int direction[2][2] = { {1,0}, {0,1}}; // 1)세로방향 2)가로방향
 int N;
 int num;
@@ -14,10 +14,10 @@ bool safe(int i, int j)
 
 int check(int i, int j, char shape, int di, int dj)
 {
-	visited[i][j] = 1; num++;
-	if (safe(i + di, j + dj) && !visited[i + di][j + dj] && arr[i + di][j + dj] == shape)
+	visit[i][j] = 1; num++;
+	if (safe(i + di, j + dj) && !visit[i + di][j + dj] && arr[i + di][j + dj] == shape)
 		check(i + di, j + dj, shape, di, dj);
-	if (safe(i - di, j - dj) && !visited[i - di][j - dj] && arr[i - di][j - dj] == shape)
+	if (safe(i - di, j - dj) && !visit[i - di][j - dj] && arr[i - di][j - dj] == shape)
 		check(i - di, j - dj, shape, di, dj);
 	return num;
 }

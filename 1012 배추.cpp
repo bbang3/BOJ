@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <memory.h>
-int M, N, K;
+int M, N, S;
 int arr[51][51];
 void f(int i, int j)
 {
@@ -22,8 +22,8 @@ int main()
 	while (T--)
 	{
 		memset(arr, 0, sizeof(arr));
-		scanf("%d%d%d", &M, &N, &K);
-		while (K--)
+		scanf("%d%d%d", &M, &N, &S);
+		while (S--)
 		{
 
 

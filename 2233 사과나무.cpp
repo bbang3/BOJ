@@ -7,7 +7,7 @@ const int MN = 2000 + 5;
 
 int N, X, Y;
 char str[MN * 2];
-int chk[MN];
+int visit[MN];
 int match[MN * 2];
 int parent[MN];
 
@@ -29,7 +29,7 @@ void tree(int curidx, int cur, int prev)
 
 void check(int n)
 {
-	chk[n]++;
+	visit[n]++;
 	if (n == 1) return;
 	check(parent[n]);
 }
@@ -52,7 +52,7 @@ int main()
 		check(match[X]);
 		check(match[Y]);
 		for (int i = N; i>0; i--)
-			if (chk[i] == 2) { print(i); break; }
+			if (visit[i] == 2) { print(i); break; }
 	}
 	return 0;
 }

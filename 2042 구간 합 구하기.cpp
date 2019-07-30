@@ -4,38 +4,34 @@
 
 using namespace std;
 
-int N, M, K, Q;
-vector<long long> tree;
+int N, M, K, M;
+vector<long long> seg;
 vector<long long> arr;
 
-long long init(int node, int start, int end) // tree의 node번 노드의 값(=arr의 start~end 구간 합)을 반환
+long long init(int node, int start, int end) // (1, 1, N) 고정
 {
-	if (start == end)
-	{
-		return tree[node] = arr[start];
-	}
+	if (start == end) return seg[node] = arr[start];
+	
 	int mid = (start + end) / 2;
-	return tree[node] = init(node * 2, start, mid) + init(node * 2 + 1, mid + 1, end);
+	return seg[node] = init(node * 2, start, mid) + init(node * 2 + 1, mid + 1, end);
 }
 
-void update(int idx, int node, int diff, int start, int end)
+void update(int node, int start, int end, int idx, long long diff) // (1, 1, N, 바꿀 인덱스, 증감량)
 {
 	if (idx < start || idx > end) return;
 
-	tree[node] += diff;
-	if (start == end)
-	{
-		return;
-	}
+	seg[node] += diff;
+	if (start == end) return;
+
 	int mid = (start + end) / 2;
-	update(idx, node * 2, diff, start, mid);
-	update(idx, node * 2 + 1, diff, mid + 1, end);
+	update(node * 2, start, mid, idx, diff);
+	update(node * 2 + 1, mid + 1, end, idx, diff);
 }
-// 현재 node번 노드 탐색 중, start - end 구간 내에서 left - right 구간 합 구하기
-long long sum(int node, int start, int end, int left, int right)
+
+long long sum(int node, int start, int end, int left, int right) // [left, right] 구간 합 반환
 {
 	if (right < start || left > end) return 0;
-	if (left <= start && end <= right) return tree[node];
+	if (left <= start && end <= right) return seg[node];
 
 	int mid = (start + end) / 2;
 	return sum(node * 2, start, mid, left, right) + sum(node * 2 + 1, mid + 1, end, left, right);
@@ -44,31 +40,29 @@ long long sum(int node, int start, int end, int left, int right)
 int main()
 {
 	scanf("%d %d %d", &N, &M, &K);
+	arr.resize(N + 2);
 	for (int i = 1; i <= N; i++)
 	{
 		long long n;
 		scanf("%lld", &n);
-		arr.push_back(n);
+		arr[i] = n;
 	}
-	int h = (int)ceil(log2(N));
-	tree.resize((1 << (h + 1)) - 1);
-	init(1, 0, N-1);
-	Q = M + K;
-	while (Q--)
+	seg.resize(4 * N + 100);
+	init(1, 1, N);
+	M = M + K;
+	while (M--)
 	{
 		int q, b, c;
 		scanf("%d %d %d", &q, &b, &c);
 		if (q == 1)
 		{
-			b--;
 			long long diff = c - arr[b];
 			arr[b] = c;
-			update(b, 1, diff, 0, N - 1);
+			update(1, 1, N, b, diff);
 		}
 		else
 		{
-			b--; c--;
-			long long s = sum(1, 0, N-1, b, c);
+			long long s = sum(1, 1, N, b, c);
 			printf("%lld\n", s);
 		}
 	}

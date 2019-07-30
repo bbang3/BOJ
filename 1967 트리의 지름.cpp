@@ -5,26 +5,26 @@ using namespace std;
 
 struct edge
 {
-	int dest;
+	int v;
 	int w;
-	edge(int dest, int w) : dest(dest), w(w) {}
+	edge(int dest, int w) : v(dest), w(w) {}
 };
 
 const int MN = 10000;
 int N;
 vector<int> len[MN + 5]; // len[i] : i번 노드에서 갈 수 있는 최대 길이
-vector<edge> graph[MN + 5];
+vector<edge> dist[MN + 5];
 int totallen = 0;
 
-int dfs(int cur, int prev) // cur 노드에서 갈 수 있는 최대 길이 구함.
+int numbering(int cur, int prev) // cur 노드에서 갈 수 있는 최대 길이 구함.
 {
 
 	int ret = 0;
-	for (auto next : graph[cur])
+	for (auto next : dist[cur])
 	{
-		if (next.dest != prev)
+		if (next.v != prev)
 		{
-			int d = next.w + dfs(next.dest, cur);
+			int d = next.w + numbering(next.v, cur);
 			ret = max(d, ret); // 자신의 서브트리로 내려가는 경로 중 가장 긴 길이 구함
 			len[cur].push_back(d);
 		}
@@ -46,10 +46,10 @@ int main()
 	{
 		int a, b, w;
 		scanf("%d %d %d", &a, &b, &w);
-		graph[a].push_back(edge(b, w));
-		graph[b].push_back(edge(a, w));
+		dist[a].push_back(edge(b, w));
+		dist[b].push_back(edge(a, w));
 	}
-	dfs(1, -1);
+	numbering(1, -1);
 	printf("%d", totallen);
 	return 0;
 }

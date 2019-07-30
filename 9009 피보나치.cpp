@@ -4,21 +4,21 @@
 using namespace std;
 
 int fibo[100] = { 0, 1, };
-vector<int> V;
+vector<int> N;
 void f(int curidx, int curn)
 {
 	if (curidx == 0)
 	{
 		if (curn == 0)
 		{
-			sort(V.begin(), V.end());
-			for (int a : V) printf("%d ", a);
+			sort(N.begin(), N.end());
+			for (int a : N) printf("%d ", a);
 		}
 		return;
 	}
 	if (curn >= fibo[curidx])
 	{
-		V.push_back(fibo[curidx]);
+		N.push_back(fibo[curidx]);
 		f(curidx - 1, curn - fibo[curidx]);
 	}
 	else f(curidx - 1, curn);
@@ -41,7 +41,7 @@ int main()
 		int n;
 		scanf("%d", &n);
 
-		V.clear();
+		N.clear();
 		f(i, n);
 		puts("");
 	}

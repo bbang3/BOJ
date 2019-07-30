@@ -6,8 +6,8 @@ using namespace std;
 
 int N;
 int arr[102][102];
-bool visited[102][102];
-queue<pair<int, int>> Q;
+bool visit[102][102];
+queue<pair<int, int>> M;
 int di[] = { -1,1,0,0 };
 int dj[] = { 0,0,-1,1 };
 
@@ -18,8 +18,8 @@ bool issafe(int i, int j)
 
 void flood_fill(int curi, int curj)
 {
-	if (!issafe(curi, curj) || visited[curi][curj]) return;
-	visited[curi][curj] = true;
+	if (!issafe(curi, curj) || visit[curi][curj]) return;
+	visit[curi][curj] = true;
 	
 	for (int i = 0; i < 4; i++)
 		flood_fill(curi + di[i], curj + dj[i]);
@@ -27,20 +27,20 @@ void flood_fill(int curi, int curj)
 
 void flood_fill_byqueue(int curi, int curj)
 {
-	Q.push({ curi,curj });
-	while (!Q.empty())
+	M.push({ curi,curj });
+	while (!M.empty())
 	{
-		int curi = Q.front().first, curj = Q.front().second;
-		Q.pop();
-		visited[curi][curj] = true;
+		int curi = M.front().first, curj = M.front().second;
+		M.pop();
+		visit[curi][curj] = true;
 
 		for (int i = 0; i < 4; i++)
 		{
 			int nexti = curi + di[i], nextj = curj + dj[i];
-			if (issafe(nexti, nextj) && !visited[nexti][nextj])
+			if (issafe(nexti, nextj) && !visit[nexti][nextj])
 			{
-				Q.push({ nexti,nextj });
-				visited[nexti][nextj] = true;
+				M.push({ nexti,nextj });
+				visit[nexti][nextj] = true;
 			}
 		}
 	}
@@ -61,14 +61,14 @@ int main()
 	{
 		int cnt = 0;
 
-		memset(visited, 0, sizeof(visited));
+		memset(visit, 0, sizeof(visit));
 		for (int i = 1; i <= N; i++)
 			for (int j = 1; j <= N; j++)
-				if (arr[i][j] <= h) visited[i][j] = true;
+				if (arr[i][j] <= h) visit[i][j] = true;
 
 		for (int i = 1; i <= N; i++)
 			for (int j = 1; j <= N; j++)
-				if (!visited[i][j])
+				if (!visit[i][j])
 					flood_fill_byqueue(i, j), cnt++;
 					//flood_fill(i, j), cnt++;
 

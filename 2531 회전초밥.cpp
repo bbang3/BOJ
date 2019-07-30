@@ -1,25 +1,26 @@
 #include <cstdio>
 #include <queue>
 using namespace std;
-int N, d, k, c;
+int N, d, k, color;
 int arr[30001];
 int time[3001];
-queue<int> Q;
+queue<int> M;
 int main()
 {
-	scanf("%d%d%d%d", &N, &d, &k, &c);
+	scanf("%d%d%d%d", &N, &d, &k, &color);
 	for (int i = 0; i < N; i++) {
 		scanf("%d", &arr[i]);
 	}
 
 	int ans = 0, temp = 1; // ÄíÆù
-	time[c] = 1;
+	time[color] = 1;
 	for (int i = 0; i < k; i++)
 	{
-		Q.push(arr[i]);
+		M.push(arr[i]);
 		if (!time[arr[i]]) {
 			temp++;
-		}
+		}	
+
 		time[arr[i]]++;
 	}
 	ans = temp;
@@ -27,14 +28,14 @@ int main()
 	int loop = 0, i = k;
 	while(loop < N)
 	{
-		int front = Q.front();
-		Q.pop();
-		if (front != c)
+		int front = M.front();
+		M.pop();
+		if (front != color)
 		{
 			time[front]--;
 			if (!time[front]) temp--;
 		}
-		Q.push(arr[i]);
+		M.push(arr[i]);
 		if (!time[arr[i]]) temp++;
 		time[arr[i]]++;
 

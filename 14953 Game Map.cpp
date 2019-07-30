@@ -5,7 +5,7 @@ using namespace std;
 
 const int MN = 1e5 + 5;
 int N, M;
-vector<int> graph[MN];
+vector<int> dist[MN];
 int ncnt[MN];
 int ans = 0;
 pair<int, int> info[MN];
@@ -19,8 +19,8 @@ int main()
 	{
 		int a, b;
 		scanf("%d %d", &a, &b);
-		graph[a].push_back(b);
-		graph[b].push_back(a);
+		dist[a].push_back(b);
+		dist[b].push_back(a);
 		ncnt[a]++; ncnt[b]++;
 	}
 	for (int i = 0; i < N; i++)
@@ -33,7 +33,7 @@ int main()
 	{
 		int idx = info[i].second;
 		//printf("%d\n", idx);
-		for (int next : graph[idx])
+		for (int next : dist[idx])
 		{
 			if(ncnt[next] < ncnt[idx])
 				D[next] = max(D[next], D[idx] + 1);

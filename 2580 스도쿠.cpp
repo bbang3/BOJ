@@ -1,7 +1,7 @@
 #include <cstdio>
 
 
-int map[11][11];
+int candy[11][11];
 int totallen = 0;
 bool flag = false;
 
@@ -9,7 +9,7 @@ void print()
 {
 	for (int i = 1; i <= 9; i++, puts(""))
 		for (int j = 1; j <= 9; j++)
-			printf("%d ", map[i][j]);
+			printf("%d ", candy[i][j]);
 }
 
 void f(int i, int j)
@@ -19,14 +19,14 @@ void f(int i, int j)
 	{
 		for (int i = 1; i <= 9; i++)
 			for (int j = 1; j <= 9; j++)
-				if (map[i][j] == 0) return;
+				if (candy[i][j] == 0) return;
 		print();
 		flag = true;
 		return;
 	}
 	if (j == 10) f(i + 1, 1);
 
-	if (map[i][j] != 0)
+	if (candy[i][j] != 0)
 	{
 		f(i, j + 1);
 		return;
@@ -34,25 +34,25 @@ void f(int i, int j)
 
 	bool check[10] = { 0, };
 	for (int k = 1; k <= 9; k++)
-		check[map[i][k]] = check[map[k][j]] = true;
+		check[candy[i][k]] = check[candy[k][j]] = true;
 
 	int ws = (j - 1) / 3 * 3, hs = (i - 1) / 3 * 3;
 
 	for (int m = 1; m <= 3; m++)
 	{
 		for (int n = 1; n <= 3; n++)
-			check[map[hs + m][ws + n]] = true;
+			check[candy[hs + m][ws + n]] = true;
 	}
 
 	for (int n = 1; n <= 9; n++)
 	{
 		if (!check[n])
 		{
-			map[i][j] = n;
+			candy[i][j] = n;
 			/*printf("(%d, %d) %d·Î º¯°æ\n", i, j, n);
 			print();*/
 			f(i, j + 1);
-			map[i][j] = 0;
+			candy[i][j] = 0;
 		}
 	}
 }
@@ -61,7 +61,7 @@ int main()
 {
 	for (int i = 1; i <= 9; i++)
 		for (int j = 1; j <= 9; j++)
-			scanf("%d", &map[i][j]);
+			scanf("%d", &candy[i][j]);
 	//puts("");
 	f(1, 1);
 	return 0;
