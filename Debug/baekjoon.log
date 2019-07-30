@@ -1,7 +1,0 @@
-﻿  소스1.cpp
-c:\users\bestm\desktop\프로그래밍\c\baekjoon\baekjoon\소스1.cpp(9): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.14393.0\ucrt\stdio.h(1269): note: 'scanf' 선언을 참조하십시오.
-c:\users\bestm\desktop\프로그래밍\c\baekjoon\baekjoon\소스1.cpp(13): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.14393.0\ucrt\stdio.h(1269): note: 'scanf' 선언을 참조하십시오.
-  baekjoon.vcxproj -> C:\Users\bestm\Desktop\프로그래밍\C\baekjoon\Debug\baekjoon.exe
-  baekjoon.vcxproj -> C:\Users\bestm\Desktop\프로그래밍\C\baekjoon\Debug\baekjoon.pdb (Partial PDB)
