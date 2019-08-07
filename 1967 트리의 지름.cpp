@@ -13,14 +13,14 @@ struct edge
 const int MN = 10000;
 int N;
 vector<int> len[MN + 5]; // len[i] : i번 노드에서 갈 수 있는 최대 길이
-vector<edge> dist[MN + 5];
+vector<edge> cost[MN + 5];
 int totallen = 0;
 
 int numbering(int cur, int prev) // cur 노드에서 갈 수 있는 최대 길이 구함.
 {
 
 	int ret = 0;
-	for (auto next : dist[cur])
+	for (auto next : cost[cur])
 	{
 		if (next.v != prev)
 		{
@@ -46,8 +46,8 @@ int main()
 	{
 		int a, b, w;
 		scanf("%d %d %d", &a, &b, &w);
-		dist[a].push_back(edge(b, w));
-		dist[b].push_back(edge(a, w));
+		cost[a].push_back(edge(b, w));
+		cost[b].push_back(edge(a, w));
 	}
 	numbering(1, -1);
 	printf("%d", totallen);

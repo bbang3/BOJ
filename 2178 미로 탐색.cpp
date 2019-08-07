@@ -6,7 +6,7 @@
 using namespace std;
 typedef pair<int, int> pii;
 int candy[MAXN + 5][MAXN + 5];
-int dist[MAXN + 5][MAXN + 5];
+int cost[MAXN + 5][MAXN + 5];
 int N, M;
 queue<pii> M;
 
@@ -26,10 +26,10 @@ int main()
 
 	for (int i = 1; i <= N; i++)
 		for (int j = 1; j <= M; j++)
-			dist[i][j] = -1;
+			cost[i][j] = -1;
 
 	M.push({ 1, 1 });
-	dist[1][1] = 1;
+	cost[1][1] = 1;
 
 	int di[] = { 1,0,-1,0 }, dj[] = { 0,1,0,-1 };
 
@@ -44,15 +44,15 @@ int main()
 		{
 			int ni = curi + di[k], nj = curj + dj[k];
 
-			if (safe(ni, nj) && candy[ni][nj] && dist[ni][nj] == -1)
+			if (safe(ni, nj) && candy[ni][nj] && cost[ni][nj] == -1)
 			{
-				dist[ni][nj] = dist[curi][curj] + 1;
+				cost[ni][nj] = cost[curi][curj] + 1;
 				M.push({ ni,nj });
 			}
 		}
 	}
 
-	printf("%d", dist[N][M]);
+	printf("%d", cost[N][M]);
 
 	return 0;
 }

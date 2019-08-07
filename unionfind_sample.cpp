@@ -2,9 +2,9 @@
 #include <algorithm>
 using namespace std;
 
-const int MX = 1000 + 5;
+const int MN = 1000 + 5;
 
-int p[MX];
+int p[MN];
 int N;
 
 int find(int n) { return p[n] == n ? n : p[n] = find(p[n]); }

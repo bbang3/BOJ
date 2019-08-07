@@ -5,7 +5,7 @@
 using namespace std;
 #define INF 987654321
 int N, M;
-int dist[102][102];
+int cost[102][102];
 //int previous[20001];
 bool visit[102][102];
 int arr[102][102];
@@ -31,7 +31,7 @@ int main()
 	scanf("%d %d", &M, &N);
 	for (int i = 1; i <= N; i++)
 		for (int j = 1; j <= M; j++)
-			dist[i][j] = INF;
+			cost[i][j] = INF;
 
 	for (int i = 1; i <= N; i++)
 		for (int j = 1; j <= M; j++)
@@ -40,7 +40,7 @@ int main()
 	int offset[4][2] = { {-1, 0}, {1, 0}, {0, -1}, {0, 1} };
 
 	int idx = 1;
-	dist[1][1] = 0;
+	cost[1][1] = 0;
 	PQ.push(node(1, 1, arr[1][1]));
 	while (!PQ.empty())
 	{
@@ -53,14 +53,14 @@ int main()
 			
 			if (issafe(nextx, nexty) && !visit[nexty][nextx])
 			{
-				if (dist[cur.y][cur.x] + arr[nexty][nextx] < dist[nexty][nextx]) {
-					dist[nexty][nextx] = dist[cur.y][cur.x] + arr[nexty][nextx]	;
-					PQ.push(node(nextx,nexty,dist[nexty][nextx]));
+				if (cost[cur.y][cur.x] + arr[nexty][nextx] < cost[nexty][nextx]) {
+					cost[nexty][nextx] = cost[cur.y][cur.x] + arr[nexty][nextx]	;
+					PQ.push(node(nextx,nexty,cost[nexty][nextx]));
 				}
 			}
 
 		}
 	}
-	printf("%d", dist[N][M]);
+	printf("%d", cost[N][M]);
 	return 0;
 }

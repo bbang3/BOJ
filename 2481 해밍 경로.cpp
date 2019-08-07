@@ -6,7 +6,7 @@
 #include <map>
 using namespace std;
 
-vector<vector<int> > dist;
+vector<vector<int> > cost;
 int p[100005];
 map<int, int> M;
 int N, S;
@@ -40,7 +40,7 @@ void bfs()
 int main()
 {
 	scanf("%d %d", &N, &S);
-	dist.resize(N + 1);
+	cost.resize(N + 1);
 	for (int i = 1; i <= N; i++)
 	{
 		int num = 0;
@@ -63,7 +63,7 @@ int main()
 			{
 				int dest = it->second;
 
-				dist[i.second].push_back(dest);
+				cost[i.second].push_back(dest);
 			}
 		}
 	}

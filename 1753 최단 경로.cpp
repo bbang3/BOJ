@@ -24,7 +24,7 @@ struct edge // 간선 구조체
 int N, M, S;
 vector<edge> G[MN];
 priority_queue<edge> PQ; // edge형으로 PQ 선언
-int dist[MN];
+int cost[MN];
 
 int main()
 {
@@ -36,29 +36,29 @@ int main()
 		G[src].push_back(edge(dest, weight));
 	}
 
-	for (int i = 1; i <= N; i++) dist[i] = INF; // 처음엔 모든 정점의 dist값을 매우 큰 값으로 초기화
-	dist[S] = 0; // 시작 정점의 dist값 = 0으로 초기화
-	PQ.push(edge(S, dist[S])); // 시작 정점 넣고 시작
+	for (int i = 1; i <= N; i++) cost[i] = INF; // 처음엔 모든 정점의 dist값을 매우 큰 값으로 초기화
+	cost[S] = 0; // 시작 정점의 dist값 = 0으로 초기화
+	PQ.push(edge(S, cost[S])); // 시작 정점 넣고 시작
 	while (!PQ.empty())
 	{
 		edge cur = PQ.top(); PQ.pop();
 
-		if (dist[cur.v] != cur.w) continue;
+		if (cost[cur.v] != cur.w) continue;
 
 		for (edge next : G[cur.v]) 
 		{ 
-			if (dist[cur.v] + next.w < dist[next.v])
+			if (cost[cur.v] + next.w < cost[next.v])
 			{
-				dist[next.v] = dist[cur.v] + next.w;
-				PQ.push(edge(next.v, dist[next.v]));
+				cost[next.v] = cost[cur.v] + next.w;
+				PQ.push(edge(next.v, cost[next.v]));
 			}
 		}
 	}
 
 	for (int i = 1; i <= N; i++)
 	{
-		if (dist[i] == INF) puts("INF"); // INF이면 갱신이 한 번도 안됨 → 그 정점까지 갈 수 없음
-		else printf("%d\n", dist[i]);
+		if (cost[i] == INF) puts("INF"); // INF이면 갱신이 한 번도 안됨 → 그 정점까지 갈 수 없음
+		else printf("%d\n", cost[i]);
 	}
 	return 0;
 }

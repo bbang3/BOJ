@@ -30,7 +30,7 @@ const int MN = 100 + 5;
 pos S, E;
 pos P[MN];
 double G[MN][MN];
-double dist[MN];
+double cost[MN];
 int N;
 priority_queue<edge> PQ;
 
@@ -70,25 +70,25 @@ int main()
 			}
 		}
 
-	fill(dist + 1, dist + N + 1, DBL_MAX);
-	dist[1] = 0;
+	fill(cost + 1, cost + N + 1, DBL_MAX);
+	cost[1] = 0;
 	PQ.push(edge(1, 0));
 	while (!PQ.empty())
 	{
 		edge cur = PQ.top(); PQ.pop();
 
-		if (cur.w != dist[cur.v]) continue;
+		if (cur.w != cost[cur.v]) continue;
 
 		for (int next = 1; next <= N; next++)
 		{
-			if (dist[cur.v] + G[cur.v][next] < dist[next])
+			if (cost[cur.v] + G[cur.v][next] < cost[next])
 			{
-				dist[next] = dist[cur.v] + G[cur.v][next];
-				PQ.push(edge(next, dist[next]));
+				cost[next] = cost[cur.v] + G[cur.v][next];
+				PQ.push(edge(next, cost[next]));
 			}
 		}
 	}
-	printf("%lf", dist[2]);
+	printf("%lf", cost[2]);
 
 	return 0;
 }

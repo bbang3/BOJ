@@ -25,7 +25,7 @@ int N, M, S, E;
 vector<edge> G[MN];
 vector<int> V;
 priority_queue<edge> PQ;
-int dist[MN], pre[MN];
+int cost[MN], pre[MN];
 int main()
 {
 	scanf("%d%d", &N, &M);
@@ -37,27 +37,27 @@ int main()
 	}
 	scanf("%d %d", &S, &E);
 
-	for (int i = 1; i <= N; i++) dist[i] = INF, pre[i] = -1;
-	dist[S] = 0;
-	PQ.push(edge(S, dist[S]));
+	for (int i = 1; i <= N; i++) cost[i] = INF, pre[i] = -1;
+	cost[S] = 0;
+	PQ.push(edge(S, cost[S]));
 	while (!PQ.empty())
 	{
 		edge cur = PQ.top(); PQ.pop();
 
-		if (dist[cur.v] != cur.w) continue;
+		if (cost[cur.v] != cur.w) continue;
 
 		for (edge next : G[cur.v])
 		{
-			if (dist[cur.v] + next.w < dist[next.v])
+			if (cost[cur.v] + next.w < cost[next.v])
 			{
-				dist[next.v] = dist[cur.v] + next.w;
+				cost[next.v] = cost[cur.v] + next.w;
 				pre[next.v] = cur.v;
-				PQ.push(edge(next.v, dist[next.v]));
+				PQ.push(edge(next.v, cost[next.v]));
 			}
 		}
 	}
 
-	printf("%d\n", dist[E]);
+	printf("%d\n", cost[E]);
 	for (int i = E; pre[i] != -1; i = pre[i])
 		V.push_back(i);
 	V.push_back(S);

@@ -3,7 +3,7 @@
 #include <vector>
 using namespace std;
 
-const int MX = 2 * 1e5 + 5;
+const int MN = 2 * 1e5 + 5;
 const int MOD = 1e9 + 7;
 
 struct query
@@ -18,14 +18,14 @@ struct query
 	}
 };
 int N, M, C;
-int color[MX];
-query Q[MX];
+int color[MN];
+query Q[MN];
 
-int num[MX], Rcolor[MX], child[MX]; 
+int num[MN], Rcolor[MN], child[MN]; 
 // num[i] : i번 정점 ordering 후 번호 / Rcolor[i] : (ordering 후)i번 정점의 색깔 / child[i] : (ordering 후)i번 정점의 자식 개수
-long long seg[4 * MX];
-vector<int> G[MX], RG[MX]; // RG : Ordering 후 그래프
-vector<int> cList[MX]; // cList[i] : 색깔이 i인 정점 목록
+long long seg[4 * MN];
+vector<int> G[MN], RG[MN]; // RG : Ordering 후 그래프
+vector<int> cList[MN]; // cList[i] : 색깔이 i인 정점 목록
 int idx = 1;
 
 void numbering(int cur, int prev)

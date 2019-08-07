@@ -24,7 +24,7 @@ struct edge
 int N, M, S, D;
 vector<edge> G[MN], RG[MN]; // RG : 방향 반대로
 priority_queue<edge> PQ; 
-int dist[MN], dist2[MN]; // d1 : S에서 각 정점으로 가는 최단경로, d2 : 각 정점에서 D로 가는 최단경로
+int cost[MN], dist2[MN]; // d1 : S에서 각 정점으로 가는 최단경로, d2 : 각 정점에서 D로 가는 최단경로
 
 void f(int S, int dist[], vector<edge> G[])
 {
@@ -65,24 +65,24 @@ int main()
 			RG[dest].push_back(edge(src, w));
 		}
 
-		f(S, dist, G);
+		f(S, cost, G);
 		f(D, dist2, RG);
 
 		for (int i = 0; i < N; i++)
 		{
 			for (edge &e : G[i])
 			{
-				if (dist[i] == INF || dist2[e.v] == INF) continue;
+				if (cost[i] == INF || dist2[e.v] == INF) continue;
 
-				if (dist[i] + e.w + dist2[e.v] == dist[D])
+				if (cost[i] + e.w + dist2[e.v] == cost[D])
 				{
 					e.w = -1;
 				}
 			}
 		}
 
-		f(S, dist, G);
-		printf("%d\n", dist[D] == INF ? -1 : dist[D]);
+		f(S, cost, G);
+		printf("%d\n", cost[D] == INF ? -1 : cost[D]);
 	}
 	return 0;
 }

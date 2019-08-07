@@ -27,7 +27,7 @@ int N, M, X;
 vector<edge> G[MN];
 vector<edge> RG[MN]; // 방향 반대인 그래프
 priority_queue<edge> PQ;
-int dist[MN], dist2[MN];
+int cost[MN], dist2[MN];
 
 int main()
 {
@@ -40,21 +40,21 @@ int main()
 		RG[dest].push_back(edge(src, w));
 	}
 
-	for (int i = 1; i <= N; i++) dist[i] = INF;
-	dist[X] = 0;
-	PQ.push(edge(X, dist[X]));
+	for (int i = 1; i <= N; i++) cost[i] = INF;
+	cost[X] = 0;
+	PQ.push(edge(X, cost[X]));
 	while (!PQ.empty())
 	{
 		edge cur = PQ.top(); PQ.pop();
 
-		if (dist[cur.v] != cur.w) continue;
+		if (cost[cur.v] != cur.w) continue;
 
 		for (edge next : G[cur.v])
 		{
-			if (dist[cur.v] + next.w < dist[next.v])
+			if (cost[cur.v] + next.w < cost[next.v])
 			{
-				dist[next.v] = dist[cur.v] + next.w;
-				PQ.push(edge(next.v, dist[next.v]));
+				cost[next.v] = cost[cur.v] + next.w;
+				PQ.push(edge(next.v, cost[next.v]));
 			}
 		}
 	}
@@ -81,7 +81,7 @@ int main()
 	int ans = -1;
 	for (int i = 1; i <= N; i++)
 	{
-		ans = max(ans, dist[i] + dist2[i]);
+		ans = max(ans, cost[i] + dist2[i]);
 	}
 	printf("%d", ans);
 

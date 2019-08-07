@@ -12,7 +12,7 @@ struct edge
 
 const int MN = 1e5 + 5;
 
-vector<edge> dist[MN];
+vector<edge> cost[MN];
 int N, F;
 int friends[MN];
 int totallen = 0, maxlen = 0;
@@ -22,7 +22,7 @@ bool dfs(int cur, int prev, int w)
 	bool ret = false;
 	if (friends[cur]) totallen += w, ret = true;
 
-	for (edge next : dist[cur])
+	for (edge next : cost[cur])
 	{
 		if (ret) w = 0;
 		if (next.v != prev)
@@ -38,7 +38,7 @@ void get_maxlen(int cur, int prev, int w)
 {
 	if (friends[cur]) maxlen = max(maxlen, w);
 
-	for (edge next : dist[cur])
+	for (edge next : cost[cur])
 		if (next.v != prev)
 			get_maxlen(next.v, cur, w + next.w);
 }
@@ -51,7 +51,7 @@ int main()
 	{
 		int a, b, w;
 		scanf("%d %d %d", &a, &b, &w);
-		dist[a].push_back(edge(b, w));
+		cost[a].push_back(edge(b, w));
 	}
 	for (int i = 0; i < F; i++)
 	{

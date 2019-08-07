@@ -5,7 +5,7 @@
 using namespace std;
 
 int N, M;
-vector<int> dist[101];
+vector<int> cost[101];
 bool haspath[101][101];
 queue<int> M;
 bool visit[101];
@@ -18,7 +18,7 @@ int main()
 	{
 		int src, dest;
 		scanf("%d%d", &src, &dest);
-		dist[src].push_back(dest);
+		cost[src].push_back(dest);
 	}
 
 	for (int i = 1; i <= N; i++)
@@ -30,7 +30,7 @@ int main()
 			int cur = M.front();
 			M.pop();
 			visit[cur] = true;
-			for (int next : dist[cur])
+			for (int next : cost[cur])
 			{
 				if (!visit[next])
 				{

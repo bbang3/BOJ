@@ -24,7 +24,7 @@ struct edge
 int N, M, S;
 vector<edge> G[MN];
 priority_queue<edge> PQ;
-int dist[MN];
+int cost[MN];
 
 int main()
 {
@@ -36,29 +36,29 @@ int main()
 		G[src].push_back(edge(dest, w));
 	}
 
-	for (int i = 1; i <= N; i++) dist[i] = INF;
-	dist[S] = 0; 
-	PQ.push(edge(S, dist[S])); 
+	for (int i = 1; i <= N; i++) cost[i] = INF;
+	cost[S] = 0; 
+	PQ.push(edge(S, cost[S])); 
 	while (!PQ.empty())
 	{
 		edge cur = PQ.top(); PQ.pop();
 
-		if (dist[cur.v] != cur.w) continue;
+		if (cost[cur.v] != cur.w) continue;
 
 		for (edge next : G[cur.v])
 		{
-			if (dist[cur.v] + next.w < dist[next.v])
+			if (cost[cur.v] + next.w < cost[next.v])
 			{
-				dist[next.v] = dist[cur.v] + next.w;
-				PQ.push(edge(next.v, dist[next.v]));
+				cost[next.v] = cost[cur.v] + next.w;
+				PQ.push(edge(next.v, cost[next.v]));
 			}
 		}
 	}
 
 	for (int i = 1; i <= N; i++)
 	{
-		if (dist[i] == INF) puts("INF");
-		else printf("%d\n", dist[i]);
+		if (cost[i] == INF) puts("INF");
+		else printf("%d\n", cost[i]);
 	}
 	return 0;
 }

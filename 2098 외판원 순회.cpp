@@ -4,8 +4,8 @@
 using namespace std;
 #define INF 1234567890
 const int MN = 20;
-const int MX = 1 << 20;
-int D[MN][MX]; // D[i][j] : 현재 i번 도시에 있고, 도시 방문 상태가 j일 때 방문하지 않은 도시들을 방문해서 시작점으로 돌아가는 최소 비용
+const int MN = 1 << 20;
+int D[MN][MN]; // D[i][j] : 현재 i번 도시에 있고, 도시 방문 상태가 j일 때 방문하지 않은 도시들을 방문해서 시작점으로 돌아가는 최소 비용
 int G[MN][MN];
 int N;
 // 0-base

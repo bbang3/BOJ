@@ -27,7 +27,7 @@ struct edge
 int N, M, S;
 vector<edge> G[MN];
 priority_queue<edge> PQ;
-long long dist[MN], dist2[2][MN]; 
+long long cost[MN], dist2[2][MN]; 
 // dist2[0][i] : 마지막 이동을 느리게 해서 i번 정점으로 가는 최단 경로
 // dist2][1][i] : 마지막 이동을 빠르게 해서 i번 정점으로 가는 최단 경로
 
@@ -43,22 +43,22 @@ int main()
 		G[dest].push_back(edge(src, w)); 
 	}
 
-	for (int i = 1; i <= N; i++) dist[i] = INF;
+	for (int i = 1; i <= N; i++) cost[i] = INF;
 	S = 1;
-	dist[S] = 0;
-	PQ.push(edge(S, dist[S]));
+	cost[S] = 0;
+	PQ.push(edge(S, cost[S]));
 	while (!PQ.empty())
 	{
 		edge cur = PQ.top(); PQ.pop();
 
-		if (dist[cur.v] != cur.w) continue;
+		if (cost[cur.v] != cur.w) continue;
 
 		for (edge next : G[cur.v])
 		{
-			if (dist[cur.v] + next.w < dist[next.v])
+			if (cost[cur.v] + next.w < cost[next.v])
 			{
-				dist[next.v] = dist[cur.v] + next.w;
-				PQ.push(edge(next.v, dist[next.v]));
+				cost[next.v] = cost[cur.v] + next.w;
+				PQ.push(edge(next.v, cost[next.v]));
 			}
 		}
 	}
@@ -90,7 +90,7 @@ int main()
 	for (int i = 1; i <= N; i++)
 	{
 		//printf("%lld %lld %lld\n", dist[i], dist2[0][i], dist2[1][i]);
-		if (dist[i] < min(dist2[0][i],dist2[1][i])) ans++;
+		if (cost[i] < min(dist2[0][i],dist2[1][i])) ans++;
 	}
 	printf("%d", ans);
 	return 0;

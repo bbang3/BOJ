@@ -18,7 +18,7 @@ struct node
 int N, M;
 int si, sj;
 char map[MN][MN];
-int dist[MN][MN][(1 << 6) + 5];
+int cost[MN][MN][(1 << 6) + 5];
 queue<node> M;
 
 bool safe(int i, int j) { return i >= 1 && i <= N && j >= 1 && j <= M; }
@@ -40,11 +40,11 @@ int main()
 			}
 
 			for (int k = 0; k <= (1 << 6); k++)
-				dist[i][j][k] = INF;
+				cost[i][j][k] = INF;
 		}
 	}
 	//printf("%d %d", si, sj);
-	dist[si][sj][0] = 0;
+	cost[si][sj][0] = 0;
 	M.push(node(si, sj, 0));
 
 	int di[] = { -1,0,1,0 }, dj[] = { 0,-1,0,1 }; // ╩С аб го ©Л
@@ -55,7 +55,7 @@ int main()
 
 		if (map[cur.i][cur.j] == '1')
 		{
-			ans = min(ans, dist[cur.i][cur.j][cur.key]);
+			ans = min(ans, cost[cur.i][cur.j][cur.key]);
 			continue;
 		}
 		for (int k = 0; k < 4; k++)
@@ -74,9 +74,9 @@ int main()
 				nk = updatekey(map[ni][nj], cur.key);
 			}
 
-			if (dist[ni][nj][nk] > dist[cur.i][cur.j][cur.key] + 1)
+			if (cost[ni][nj][nk] > cost[cur.i][cur.j][cur.key] + 1)
 			{
-				dist[ni][nj][nk] = dist[cur.i][cur.j][cur.key] + 1;
+				cost[ni][nj][nk] = cost[cur.i][cur.j][cur.key] + 1;
 				M.push(node(ni, nj, nk));	
 			}
 		}

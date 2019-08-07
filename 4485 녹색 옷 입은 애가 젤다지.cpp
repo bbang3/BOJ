@@ -24,7 +24,7 @@ struct edge
 int N;
 priority_queue<edge> PQ;
 int map[MN][MN];
-int dist[MN][MN];
+int cost[MN][MN];
 
 bool safe(int i, int j) { return i >= 1 && i <= N && j >= 1 && j <= N; }
 
@@ -39,34 +39,34 @@ int main()
 		for (int i = 1; i <= N; i++) 
 			for (int j = 1; j <= N; j++)
 			{
-				dist[i][j] = INF;
+				cost[i][j] = INF;
 				scanf("%d", &map[i][j]);
 			}
 
-		dist[1][1] = map[1][1];
-		PQ.push(edge(1, 1, dist[1][1]));
+		cost[1][1] = map[1][1];
+		PQ.push(edge(1, 1, cost[1][1]));
 
 		int di[] = { -1,0,1,0 }, dj[] = { 0,-1,0,1 };
 		while (!PQ.empty())
 		{
 			edge cur = PQ.top(); PQ.pop();
 
-			if (cur.w != dist[cur.i][cur.j]) continue;
+			if (cur.w != cost[cur.i][cur.j]) continue;
 			if (cur.i == N && cur.j == N) break;
 
 			for (int k = 0; k < 4; k++)
 			{
 				int ni = cur.i + di[k], nj = cur.j + dj[k];
 
-				if (safe(ni, nj) && dist[cur.i][cur.j] + map[ni][nj] < dist[ni][nj])
+				if (safe(ni, nj) && cost[cur.i][cur.j] + map[ni][nj] < cost[ni][nj])
 				{
-					dist[ni][nj] = dist[cur.i][cur.j] + map[ni][nj];
-					PQ.push(edge(ni, nj, dist[ni][nj]));
+					cost[ni][nj] = cost[cur.i][cur.j] + map[ni][nj];
+					PQ.push(edge(ni, nj, cost[ni][nj]));
 				}
 			}
 		}
 
-		printf("Problem %d: %d\n", loop++, dist[N][N]);
+		printf("Problem %d: %d\n", loop++, cost[N][N]);
 	}
 
 	return 0;
