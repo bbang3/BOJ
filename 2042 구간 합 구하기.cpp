@@ -53,7 +53,7 @@ int main()
 	while (M--)
 	{
 		int q, b, c;
-		scanf("%d %d %d", &q, &b, &c);
+		scanf("%d %d %d", &q, &b	, &c);
 		if (q == 1)
 		{
 			long long diff = c - arr[b];

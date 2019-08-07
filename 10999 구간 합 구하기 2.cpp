@@ -62,7 +62,7 @@ void update_range(int node, int start, int end, int left, int right, long long d
 	seg[node] = seg[node * 2] + seg[node * 2 + 1];
 }
 
-// 현재 node번 노드 탐색 중, start - end 구간 내에서 left - right 구간 합 구하기
+// [left, right] 구간 합 구하기
 long long sum(int node, int start, int end, int left, int right)
 {
 	update_lazy(node, start, end);
