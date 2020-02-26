@@ -1,6 +1,2 @@
-소스.cpp
-Debug/
-BOJ/
-*.txt
-Release/
-x64/
+*
+!*.cpp
