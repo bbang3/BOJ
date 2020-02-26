@@ -10,10 +10,8 @@ int main()
 	int N;
 	long long ans = 0;
 	scanf("%d", &N);
-	for (int i = 1; i <= N; i++)
-	{
-		scanf("%d", &height[i]);
-	}
+	for (int i = 1; i <= N; i++) scanf("%d", &height[i]);
+
 	S.push(height[1]);
 	for (int i = 2; i <= N; i++)
 	{

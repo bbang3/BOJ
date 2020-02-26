@@ -41,6 +41,6 @@ int main()
 		}
 		card[num][i]++;
 	}
-	printf("%d %d %d %d", 13 - p, 13-k, 13-h, 13-t);
+	printf("%d %d %d %d", 13 - p, 13 - k, 13 - h, 13 - t);
 	return 0;
 }

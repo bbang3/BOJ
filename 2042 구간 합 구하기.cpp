@@ -3,12 +3,13 @@
 #include <math.h>
 
 using namespace std;
+typedef long long ll;
 
 int N, M, K, M;
-vector<long long> seg;
-vector<long long> arr;
+vector<ll> seg;
+vector<ll> arr;
 
-long long init(int node, int start, int end) // (1, 1, N) 고정
+ll init(int node, int start, int end) // (1, 1, N) 고정
 {
 	if (start == end) return seg[node] = arr[start];
 	
@@ -16,7 +17,7 @@ long long init(int node, int start, int end) // (1, 1, N) 고정
 	return seg[node] = init(node * 2, start, mid) + init(node * 2 + 1, mid + 1, end);
 }
 
-void update(int node, int start, int end, int idx, long long diff) // (1, 1, N, 바꿀 인덱스, 증감량)
+void update(int node, int start, int end, int idx, ll diff) // (1, 1, N, 바꿀 인덱스, 증감량)
 {
 	if (idx < start || idx > end) return;
 
@@ -28,7 +29,7 @@ void update(int node, int start, int end, int idx, long long diff) // (1, 1, N, 
 	update(node * 2 + 1, mid + 1, end, idx, diff);
 }
 
-long long sum(int node, int start, int end, int left, int right) // [left, right] 구간 합 반환
+ll sum(int node, int start, int end, int left, int right) // [left, right] 구간 합 반환
 {
 	if (right < start || left > end) return 0;
 	if (left <= start && end <= right) return seg[node];
@@ -43,7 +44,7 @@ int main()
 	arr.resize(N + 2);
 	for (int i = 1; i <= N; i++)
 	{
-		long long n;
+		ll n;
 		scanf("%lld", &n);
 		arr[i] = n;
 	}
@@ -56,13 +57,13 @@ int main()
 		scanf("%d %d %d", &q, &b	, &c);
 		if (q == 1)
 		{
-			long long diff = c - arr[b];
+			ll diff = c - arr[b];
 			arr[b] = c;
 			update(1, 1, N, b, diff);
 		}
 		else
 		{
-			long long s = sum(1, 1, N, b, c);
+			ll s = sum(1, 1, N, b, c);
 			printf("%lld\n", s);
 		}
 	}

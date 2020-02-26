@@ -12,11 +12,11 @@ struct edge
 
 const int MN = 10000;
 int N;
-vector<int> len[MN + 5]; // len[i] : i번 노드에서 갈 수 있는 최대 길이
+vector<int> len[MN + 5]; // len[i][j] : i번 노드에서 j번 노드까지의 경로 길이
 vector<edge> cost[MN + 5];
 int totallen = 0;
 
-int numbering(int cur, int prev) // cur 노드에서 갈 수 있는 최대 길이 구함.
+int f(int cur, int prev) // cur 노드를 루트로 하는 트리의 최대 경로 길이 반환
 {
 
 	int ret = 0;
@@ -24,7 +24,7 @@ int numbering(int cur, int prev) // cur 노드에서 갈 수 있는 최대 길이 구함.
 	{
 		if (next.v != prev)
 		{
-			int d = next.w + numbering(next.v, cur);
+			int d = next.w + f(next.v, cur);
 			ret = max(d, ret); // 자신의 서브트리로 내려가는 경로 중 가장 긴 길이 구함
 			len[cur].push_back(d);
 		}
@@ -49,7 +49,7 @@ int main()
 		cost[a].push_back(edge(b, w));
 		cost[b].push_back(edge(a, w));
 	}
-	numbering(1, -1);
+	f(1, -1);
 	printf("%d", totallen);
 	return 0;
 }

@@ -5,15 +5,6 @@ using namespace std;
 int N;
 int D[35]; // D[i] : 3*i크기의 벽을 채우는 경우의 수
 
-int f(int i)
-{
-	if (D[i] != -1) return D[i];
-
-	return D[i] = f(i - 2) * 4 + f(i - 4) * 2;
-
-
-}
-
 int main()
 {
 	scanf("%d", &N);

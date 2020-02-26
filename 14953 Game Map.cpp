@@ -5,7 +5,7 @@ using namespace std;
 
 const int MN = 1e5 + 5;
 int N, M;
-vector<int> cost[MN];
+vector<int> G[MN];
 int ncnt[MN];
 int ans = 0;
 pair<int, int> info[MN];
@@ -19,8 +19,8 @@ int main()
 	{
 		int a, b;
 		scanf("%d %d", &a, &b);
-		cost[a].push_back(b);
-		cost[b].push_back(a);
+		G[a].push_back(b);
+		G[b].push_back(a);
 		ncnt[a]++; ncnt[b]++;
 	}
 	for (int i = 0; i < N; i++)
@@ -33,7 +33,7 @@ int main()
 	{
 		int idx = info[i].second;
 		//printf("%d\n", idx);
-		for (int next : cost[idx])
+		for (int next : G[idx])
 		{
 			if(ncnt[next] < ncnt[idx])
 				D[next] = max(D[next], D[idx] + 1);

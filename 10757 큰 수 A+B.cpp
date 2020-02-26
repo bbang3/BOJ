@@ -15,10 +15,10 @@ int main()
 	for (int i = 0; str1[i]; i++) n1[i] = str1[i] - '0';
 	for (int i = 0; str2[i]; i++) n2[i] = str2[i] - '0';
 
-	int idx1 = strlen(str1) - 1, idx2 = strlen(str2) - 1, i = 0;
+	int idx1 = strlen(str1) - 1, idx2 = strlen(str2) - 1, i = 0; // 일의 자리 연산 결과부터 result[0]에 저장
 	for (; idx1 >= 0 || idx2 >= 0; i++)
 	{
-		if (result[i] + n1[idx1] + n2[idx2] >= 10)
+		if (result[i] + n1[idx1] + n2[idx2] >= 10) // 받아올림
 			result[i + 1]++, result[i] += n1[idx1] + n2[idx2] - 10;
 		else result[i] += n1[idx1] + n2[idx2];
 

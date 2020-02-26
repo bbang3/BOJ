@@ -14,7 +14,7 @@ int main()
 
 	for (int i = 2; i * i <= N; i++)
 		if (isprime[i])
-			for (int j = i *i; j <= N; j += i)
+			for (int j = i * i; j <= N; j += i)
 				isprime[j] = false;
 
 	for (int num = M; num <= N; num++)

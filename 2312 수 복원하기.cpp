@@ -11,9 +11,9 @@ void init()
 {
 	for (int i = 2; i <= MN; i++)
 		minfact[i] = i;
-	for (int i = 2; i*i <= MN; i++)
+	for (int i = 2; i * i <= MN; i++)
 		if (minfact[i] == i)
-			for (int j = i *i; j <= MN; j += i)
+			for (int j = i * i; j <= MN; j += i)
 				if (minfact[j] == j) minfact[j] = i;
 }
 
@@ -27,7 +27,7 @@ void factorize(int n)
 		n /= minfact[n];
 	}
 	for (int i = 2; i <= MN; i++)
-		if(cnt[i] != 0) printf("%d %d\n", i, cnt[i]);
+		if (cnt[i] != 0) printf("%d %d\n", i, cnt[i]);
 
 	return;
 }

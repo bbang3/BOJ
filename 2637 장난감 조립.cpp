@@ -15,7 +15,7 @@ vector<edge> G[MN];
 vector<int> basis;
 int ind[MN];
 int D[MN][MN]; // D[i][j] : i번 부품을 만드는 데 필요한 "기본 부품" j의 개수
-queue<int> M;
+queue<int> Q;
 
 int main()
 {
@@ -32,14 +32,14 @@ int main()
 	for (int i = 1; i <= N; i++)
 		if (ind[i] == 0)
 		{
-			M.push(i);
+			Q.push(i);
 			basis.push_back(i);
 			D[i][i] = 1;
 		}
 
-	while (!M.empty())
+	while (!Q.empty())
 	{
-		int cur = M.front(); M.pop();
+		int cur = Q.front(); Q.pop();
 		for (edge e : G[cur])
 		{
 			for (int i = 1; i <= N; i++)
@@ -49,7 +49,7 @@ int main()
 
 			ind[e.dest]--;
 			if (ind[e.dest] == 0)
-				M.push(e.dest);
+				Q.push(e.dest);
 		}
 	}
 
