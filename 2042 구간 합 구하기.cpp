@@ -9,33 +9,33 @@ int N, M, K, M;
 vector<ll> seg;
 vector<ll> arr;
 
-ll init(int node, int start, int end) // (1, 1, N) 고정
+ll init(int node, int nodeLeft, int nodeRight) // (1, 1, N) 고정
 {
-	if (start == end) return seg[node] = arr[start];
+	if (nodeLeft == nodeRight) return seg[node] = arr[nodeLeft];
 	
-	int mid = (start + end) / 2;
-	return seg[node] = init(node * 2, start, mid) + init(node * 2 + 1, mid + 1, end);
+	int mid = (nodeLeft + nodeRight) / 2;
+	return seg[node] = init(node * 2, nodeLeft, mid) + init(node * 2 + 1, mid + 1, nodeRight);
 }
 
-void update(int node, int start, int end, int idx, ll diff) // (1, 1, N, 바꿀 인덱스, 증감량)
+void update(int node, int nodeLeft, int nodeRight, int idx, ll diff) // (1, 1, N, 바꿀 인덱스, 증감량)
 {
-	if (idx < start || idx > end) return;
+	if (idx < nodeLeft || idx > nodeRight) return;
 
 	seg[node] += diff;
-	if (start == end) return;
+	if (nodeLeft == nodeRight) return;
 
-	int mid = (start + end) / 2;
-	update(node * 2, start, mid, idx, diff);
-	update(node * 2 + 1, mid + 1, end, idx, diff);
+	int mid = (nodeLeft + nodeRight) / 2;
+	update(node * 2, nodeLeft, mid, idx, diff);
+	update(node * 2 + 1, mid + 1, nodeRight, idx, diff);
 }
 
-ll sum(int node, int start, int end, int left, int right) // [left, right] 구간 합 반환
+ll sum(int node, int nodeLeft, int nodeRight, int left, int right) // [left, right] 구간 합 반환
 {
-	if (right < start || left > end) return 0;
-	if (left <= start && end <= right) return seg[node];
+	if (right < nodeLeft || left > nodeRight) return 0;
+	if (left <= nodeLeft && nodeRight <= right) return seg[node];
 
-	int mid = (start + end) / 2;
-	return sum(node * 2, start, mid, left, right) + sum(node * 2 + 1, mid + 1, end, left, right);
+	int mid = (nodeLeft + nodeRight) / 2;
+	return sum(node * 2, nodeLeft, mid, left, right) + sum(node * 2 + 1, mid + 1, nodeRight, left, right);
 }
 
 int main()

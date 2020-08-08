@@ -13,14 +13,14 @@ struct edge
 const int MN = 10000;
 int N;
 vector<int> len[MN + 5]; // len[i][j] : i번 노드에서 j번 노드까지의 경로 길이
-vector<edge> cost[MN + 5];
+vector<edge> graph[MN + 5];
 int totallen = 0;
 
 int f(int cur, int prev) // cur 노드를 루트로 하는 트리의 최대 경로 길이 반환
 {
 
 	int ret = 0;
-	for (auto next : cost[cur])
+	for (auto next : graph[cur])
 	{
 		if (next.v != prev)
 		{
@@ -46,8 +46,8 @@ int main()
 	{
 		int a, b, w;
 		scanf("%d %d %d", &a, &b, &w);
-		cost[a].push_back(edge(b, w));
-		cost[b].push_back(edge(a, w));
+		graph[a].push_back(edge(b, w));
+		graph[b].push_back(edge(a, w));
 	}
 	f(1, -1);
 	printf("%d", totallen);

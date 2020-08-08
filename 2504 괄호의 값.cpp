@@ -1,4 +1,4 @@
-﻿#include <bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main()
@@ -32,7 +32,7 @@ int main()
 				possible = false;
 				break;
 			}
-			if(parString[i - 1] == '(')
+			if (parString[i - 1] == '(')
 				ans += mult;
 			mult /= 2;
 			stk.pop();
@@ -45,7 +45,7 @@ int main()
 				possible = false;
 				break;
 			}
-			if(parString[i - 1] == '[') 
+			if (parString[i - 1] == '[')
 				ans += mult;
 			mult /= 3;
 			stk.pop();
